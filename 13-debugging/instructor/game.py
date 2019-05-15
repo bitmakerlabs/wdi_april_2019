@@ -1,16 +1,25 @@
+from player import Player
+import random
 class Game:
 
-  def __init__(number_of_players):
+  def __init__(self, number_of_players, width, height):
+      self.players = []
+      self.height = height
+      self.width = width
       for n in range(number_of_players):
-          self.players.append(Player(range(0, width), range(0, height)))
+          player_x = random.randint(0, width)
+          player_y = random.randint(0, height)
+          player = Player(player_x, player_y)
+          self.players.append(player)
 
+  @classmethod
   def start(self):
       print("It's adventure time!")
       print("How many people are adventuring?")
       number_of_players = int(input())
 
-      game = Game(number_of_players)
-      g.turn
+      game = Game(number_of_players, 10, 11)
+      game.turn()
 
   def turn(self):
       moves = [1, -1]

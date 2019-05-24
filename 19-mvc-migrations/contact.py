@@ -5,7 +5,7 @@ db = SqliteDatabase('crm.sqlite3')
 class Contact(Model):
   first_name = CharField()
   last_name = CharField()
-  email = CharField()
+  email_address = CharField()
   note = TextField()
 
   class Meta:
@@ -16,4 +16,6 @@ class Contact(Model):
 
 db.connect()
 db.create_tables([Contact])
+contact = Contact.create(first_name='Natalie', last_name='Black', email_address='natalie@bitmaker.co', note='teaches WDI')
+print(contact)
 

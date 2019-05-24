@@ -1,11 +1,12 @@
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
+from crm.models import Contact
 
 def root_path(request):
     return HttpResponseRedirect('/contacts')
 
 def contacts_list(request):
-    context = {'contacts': []}
+    context = {'contacts': Contact.objects.all()}
     html = render(request, 'index.html', context)
     return HttpResponse(html)
 

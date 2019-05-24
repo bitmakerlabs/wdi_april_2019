@@ -11,6 +11,9 @@
     <ul>
         {% for contact in contacts %}
             <li>
+                <p> {{ contact.full_name }} </p>
+                <p> {{ contact.email_address }} </p>
+                <p> {{ contact.notes }} </p>
 
             </li>
         {% endfor %}

@@ -6,5 +6,8 @@ class Contact(models.Model):
     email_address = models.CharField(max_length=255)
     notes = models.TextField()
 
+    def __str__(self):
+        return "{} - {}".format(self.id, self.full_name())
+
     def full_name(self):
         return "{} {}".format(self.first_name, self.last_name)

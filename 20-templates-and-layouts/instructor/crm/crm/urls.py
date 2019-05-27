@@ -15,12 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from crm.views import root_path, contacts_list, gallery, portfolio
+from crm.views import no_nav, about, contact_details_page, root_path, contacts_list#, gallery, portfolio
 
 urlpatterns = [
     path('', root_path),
     path('admin/', admin.site.urls),
-    path('contacts/', contacts_list),
+    path('contacts/', contacts_list, name='contacts_page'),
+    path('contacts/<int:contact_id>', contact_details_page, name='contact_details_page'),
+    path('about/', about, name='about_page'),
+    path('no_nav/', no_nav),
+
     # path('gallery/red/blue', gallery),
     # path('portfolio/', portfolio),
 ]

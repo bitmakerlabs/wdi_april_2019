@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Contacts</h1>
+    <ul>
+        {% for contact in contacts %}
+            <li>
+                <p> 
+                    <a href="{% url 'contact_details_page' contact_id=contact.id %}">
+                    {{ contact.full_name }} 
+                    </a>
+                </p>
+                <p> {{ contact.email_address }} </p>
+                <p> {{ contact.notes }} </p>
+
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

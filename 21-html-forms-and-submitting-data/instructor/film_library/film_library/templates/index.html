@@ -10,10 +10,12 @@
 
   <form method="post" action="{% url 'film_create' %}">
 
+    {% csrf_token %}
+
     <div class="field" class="field">
       <!-- input type: text -->
       <label for="film-title">Title</label>
-      <input id="film-title" type="text" name='title' placeholder="e.g. Moonlight">
+      <input required='true' id="film-title" type="text" name='title' placeholder="e.g. Moonlight">
     </div>
 
     <div class="field">

@@ -19,4 +19,5 @@ from film_library import views
 urlpatterns = [
     path('', views.home, name='home'),
     path('films/', views.film_create, name='film_create'),
+    path('temporary/', views.temp)
 ]

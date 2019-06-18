@@ -1,0 +1,57 @@
+Alexa
+
+- lesson
+  state:
+    - date
+    - title
+    - contents
+  behaviour:
+    - happened_yet
+
+- assignment
+- student
+- instructor
+- classroom
+- assignment submission
+- progress
+
+
+que
+question
+  state:
+    - time
+    - person
+    - text
+    - in_progress
+
+
+twitter
+
+- feed
+- user
+  
+- tweet
+  state:
+    - original_tweet
+    - reply
+    - date
+    - number of likes
+    - content
+    - user
+    - published
+    - number of retweets
+  behaviour:
+    - like
+    - retweet
+    - post
+    - add a reply
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{ title }}</title>
+</head>
+<body>
+
+    {% block stuff_above_nav %}
+    {% endblock %}
+
+    <nav>
+        <ul>
+            <li><a href="{% url 'contacts_page' %}">Home</a></li>
+            <li><a href="{% url 'about_page' %}">About</a></li>
+        </ul>
+    </nav>
+
+    {% block content %}
+    {% endblock %}
+
+</body>
+</html>

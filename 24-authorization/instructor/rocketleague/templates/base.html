@@ -1,0 +1,27 @@
+
+<h1><a href="/">Rocket League DB</a></h1>
+
+<ul>
+  {% if request.user.is_authenticated %}
+    <li>Logged in as {{ request.user.username }}</li>
+    <li><a href="{% url 'new' %}">Record a game</a></li>
+    <li><a href="{% url 'logout' %}">Log out</a></li>
+  {% else %}
+    <li><a href="{% url 'signup' %}">Sign up!</a></li>
+    <li><a href="{% url 'login' %}">Log in</a></li>
+  {% endif %}
+</ul>
+
+<div class="">
+  <p><i>You've hit the index page {{ request.session.index }} times.</i></p>
+  <p><i>You've hit the show game page {{ request.session.show }} times.</i></p>
+</div>
+
+
+{% for message in messages %}
+  <p>{{ message }}</p>
+{% endfor %}
+
+{% block content %}{% endblock content %}
+
+<footer>Copyright DM 2019</footer>

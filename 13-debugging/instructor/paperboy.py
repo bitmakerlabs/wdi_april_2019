@@ -9,9 +9,10 @@ class Paperboy:
     pay = 0.25 * houses_delivered
 
     if houses_delivered > self.quota():
-      pay += 0.25 * houses_delivered - self.quota()
+      pay += 0.25 * (houses_delivered - self.quota())
     elif houses_delivered < self.quota():
       pay -= 2
+
 
     return pay
 

@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h1>Film library</h1>
+  <ul>
+    {% for film in films %}
+      <li>{{ film.title }}</li>
+    {% endfor %}
+  </ul>
+
+
+  <form method="post" action="{% url 'film_create' %}">
+
+    <div class="field" class="field">
+      <!-- input type: text -->
+      <label for="film-title">Title</label>
+      <input id="film-title" type="text" name='title' placeholder="e.g. Moonlight">
+    </div>
+
+    <div class="field">
+      <!-- input types: date / time / email / tel / url / color / range / number / search -->
+      <!-- <input type="date">
+      <input type="time">
+      <input type="email">
+      <input type="tel">
+      <input type="url">
+      <input type="color">
+      <input type="range">
+      <input type="number">
+      <input type="search"> -->
+    </div>
+
+    <div class="field">
+      <!-- textarea -->
+      <label for="film-description">Description</label>
+      <textarea name="description" placeholder="e.g. Once upon a time..." id="film-description" cols="30" rows="10"></textarea>
+    </div>
+
+    <div class="field">
+      <!-- input radio -->
+      <fieldset>
+        <legend>Rating</legend>
+
+        <label for="film-rating-1">
+          <span> 1 star </span>
+          <input id="film-rating-1" type="radio" name="rating" value="1">
+        </label>
+
+        <label for="film-rating-2">
+          <span> 2 stars </span>
+          <input id="film-rating-2" type="radio" name="rating" value="2">
+        </label>
+
+        <label for="film-rating-3">
+          <span> 3 stars </span>
+          <input id="film-rating-3"type="radio" name="rating" value="3">
+        </label>
+      </fieldset>
+    </div>
+
+    <div class="field">
+      <!-- input checkbox -->
+      <!-- <input type="checkbox"> -->
+    </div>
+
+
+    <div class="field">
+      <!-- select / option -->
+      <label for="film-country">Country</label>
+      <select name="country" id="film-country">
+        <option value="">Please select a country</option>
+        <option value="CA">Canada</option>
+        <option value="US">United States</option>
+        <option value="GB">United Kingdom</option>
+        <option value="JP">Japan</option>
+      </select>
+    </div>
+
+
+    <div class="field">
+      <!-- file -->
+      <!-- <input type="file"> -->
+    </div>
+
+    <!-- hidden -->
+    <!-- <input type="hidden" value="lskdjfladsjflksjdflsjd" name="loyalty-points-account-number"> -->
+
+    <div class="field">
+      <!-- input submit / button -->
+      <!-- <input type="submit" value="create film"> -->
+      <button type="submit">
+        <span>create film</span>
+        <img src="http://placekitten.com/100/100" alt="a cat">
+      </button>
+    </div>
+
+  </form>
+{% endblock %}

@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lesson</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script src="slides.js"></script>
+    <style type="text/css">
+
+      @import url(slides.css);
+
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+# Object Oriented Programming
+
+aka OOP
+
+## *Part 2*
+---
+
+# Agenda
+
+### review OOP Part 1
+
+### class methods
+
+### class variables
+
+### magic methods
+---
+
+# What is OOP?
+
+--
+
+- a programming paradigm in which we structure our programs into objects
+---
+
+# What is an object?
+
+--
+
+- in OOP, objects are  abstractions that represent real word objects and behaviours
+
+--
+
+- an object can represent anything. for example:
+
+ - a dog, house, boat
+ - walking, building, sailing
+ - deposit_into_account, blue, italics
+--
+
+- objects can hold both values (attributes) and methods
+
+--
+
+- an object is a general term that can represent a **class** or an **instance** of a class
+---
+
+# What is a class?
+
+--
+
+- a blueprint for any ***instance*** created with it
+
+--
+
+- a class also holds functionality common to the collection of instances created with it
+
+--
+
+- only one class of a particular type can exist in a program
+---
+
+# How is a class created?
+
+--
+
+Classes are created by defining them with the `class` keyword.
+
+```py
+class MyClass:
+  pass
+```
+---
+
+# What is an instance?
+
+--
+
+Objects that are created (instantiated) from a class's blueprint.
+
+--
+
+Each instance is unique.
+
+--
+
+Many instances based on the same class can exist in a program.
+---
+
+# How is an instance created?
+
+--
+
+Instance methods are created by putting round brackets `()` beside the class name.
+
+```py
+my_instance = MyClass()
+```
+---
+
+
+# What is a constructor method?
+
+--
+
+The constructor method is automatically invoked when an instance is created.
+
+--
+
+In python, this is the `__init__` method.
+
+```py
+class MyClass:
+
+  def __init__(self):
+    print("I get called when I'm instantiated")
+```
+---
+
+# What is an instance method?
+
+--
+
+Instance methods define behaviours and have access to themselves through `self`.
+---
+
+# How is an instance method created?
+
+--
+
+Instance methods are created by defining a method and using `self` as the first argument.
+
+```py
+class MyClass:
+
+  def my_instance_method(self):
+    pass
+```
+
+--
+
+*Note:* `self` is just used by convention. Technically, any argument name could be used to capture a particular instance into a variable.
+---
+
+# How is an instance method invoked?
+
+--
+
+Instance methods are invoked by using dot notation and brackets.
+
+- the dot is between the instance variable name and the method
+- the brackets follow the method
+
+
+```py
+class MyClass:
+
+  def my_instance_method(self):
+    print('I am an instance method')
+
+my_instance = MyClass()
+my_instance.my_instance_method()
+```
+---
+
+# What is an instance attribute?
+
+Instance attributes are values (properties) attached to a particular instance.
+---
+
+# How is an instance attribute set?
+
+--
+
+Instance attributes are set by using a `self.attribute = 'value'` syntax.
+
+```py
+class MyClass:
+
+  def __init__(self):
+    self.value = 0
+```
+---
+
+# How is an instance attribute retrieved?
+
+Instance attributes are retrieved by using `my_instance.attribute` syntax.
+
+--
+
+Within the instance, this would be `self.attribute`.
+
+--
+
+Outside the instance, this would be `my_instance.attribute`
+
+```py
+class Account:
+
+  def __init__(self):
+    self.amount = 100
+
+  def amount_formatted(self):
+    return "${0:.2f}".format(self.amount)
+
+account = Account()
+
+print(account.amount_formatted())
+```
+---
+
+layout: true
+
+# Artwork Exercise
+---
+
+Create a ***class*** called `Art` for a piece of artwork.
+
+We should keep track of the name, artist and value of the artwork.
+
+Create a `__str__` method that displays the object when printed like so:
+
+"The Starry Night by Vincent van Gogh valued at $10.00"
+
+### Sample Data:
+
+- The Starry Night by Vincent van Gogh valued at $10.00
+- Infinity Mirrors by Yayoi Kusama valued at $50.00
+- The Wounded Deer by Frida Kahlo valued at $35.99
+---
+
+```py
+class Art:
+
+  def __init__(self, name, artist, value):
+    self.name   = name
+    self.artist = artist
+    self.value  = value
+
+  def value_formatted(self):
+    return "${0:.2f}".format(self.value)
+
+  def __str__(self):
+    return f'{self.name} by {self.artist} valued at {self.value_formatted()}'
+
+starry_night     = Art('The Starry Night', 'Vincent van Gogh', 10.00)
+infinity_mirrors = Art('Infinity Mirrors', 'Yayoi Kusama',     50.00)
+wounded_deer     = Art('The Wounded Deer', 'Frida Kahlo',      35.99)
+
+print(starry_night)
+```
+---
+layout: true
+
+# Artwork Exercise: Your Turn
+---
+
+<div>
+
+Create a `Gallery` class that has the name and city of a gallery.
+<br>
+<br>
+Create an `artwork` attribute for each gallery. It should start off as an empty array.
+<br>
+<br>
+Create an `add` method that accepts a piece of artwork and adds the object to the `artwork` array.
+<br>
+<br>
+Create a `print_inventory` method that displays the gallery name and the name of each piece of artwork.
+
+</div>
+
+```py
+ago = Gallery('Art Gallery of Ontario', 'Toronto')
+
+ago.add(infinity_mirrors)
+ago.add(wounded_deer)
+
+ago.print_inventory()
+```
+<div>
+Output:
+</div>
+
+```
+Art Gallery of Ontario Inventory
+
+Infinity Mirrors
+The Wounded Deer
+```
+---
+
+```py
+class Gallery:
+
+  def __init__(self, name, city):
+    self.name    = name
+    self.city    = city
+    self.artwork = []
+
+  def add(self, gallery):
+    self.artwork.append(gallery)
+
+  def print_inventory(self):
+    print(self.name)
+    print()
+
+    for art in self.artwork:
+      print(art.name)
+```
+---
+layout: false
+
+# What is a class method?
+
+--
+
+A class method is a method that knows about itself (the class) as a whole.
+
+--
+
+Class methods don't have direct access to their own instances.
+---
+
+# How is a class method created?
+
+--
+
+A class method is created by putting the `@classmethod` decorator above the method definition.
+
+--
+
+A decorator is a function that takes another function and extends its behaviour.
+
+--
+
+A class method's first argument represents the class.
+
+--
+
+By convention, this argument is `cls`.
+
+```py
+class MyClass:
+
+  @classmethod
+  def my_class_method(cls):
+    print("I am a class method.")
+```
+---
+
+# How is a class method invoked?
+
+--
+
+Class methods are invoked by using dot notation and brackets.
+
+- the dot is between the class and the method
+- the brackets follow the method
+
+```py
+class MyClass:
+
+  @classmethod
+  def my_class_method(cls):
+    print('I am class method')
+
+MyClass.my_class_method()
+```
+---
+
+# What is a class attribute?
+
+--
+
+A class attribute is a value or property that applies to the entire class.
+---
+
+# How is a class attribute set?
+
+--
+
+By defining the value with the body of the class.
+
+The attribute should not be within a method.
+
+```py
+class MyClass:
+
+  my_class_attribute = "I am a class attribute"
+```
+---
+
+# How is a class attribute retrieved
+
+--
+
+Class attributes are retrieved by using dot notation between the class and the attribute.
+
+```py
+class MyClass:
+
+  my_class_attribute = 'hello'
+
+print(MyClass.my_class_attribute)
+```
+
+Notice that unlike methods, brackets are not used when retrieving the value of them.
+---
+
+# Gallery Report Exercise
+
+Extend the `Gallery` class with a `report` method.
+
+The `report` method displays the number of galleries in each city.
+
+The city list is sorted by number of galleries they each have.
+
+Given the following data:
+
+```py
+ago          = Gallery('Art Gallery of Ontario',         'Toronto')
+louvre       = Gallery('Louvre',                         'Paris')
+paris_modern = Gallery('Paris Museum of Modern Art',     'Paris')
+pompidou     = Gallery('The Centre Pompidou',            'Paris')
+nyc_modern   = Gallery('The Metropolitan Museum of Art', 'New York')
+guggenheim   = Gallery('Guggenheim Museum',              'New York')
+
+Gallery.report()
+```
+
+The output would be:
+
+```
+Toronto: 1
+New York: 2
+Paris: 3
+```
+---
+
+```py
+class Gallery:
+
+  galleries = []
+
+  def __init__(self, name, city):
+    self.name    = name
+    self.city    = city
+    self.artwork = []
+    Gallery.galleries.append(self)
+
+  def add(self, gallery):
+    self.artwork.append(gallery)
+
+  @classmethod
+  def report(cls):
+    for city, number in cls.sorted_cities():
+      print(f'{city}: {number}')
+
+  @classmethod
+  def cities(cls):
+    result = {}
+
+    for gallery in cls.galleries:
+      city = gallery.city
+      if result.get(city):
+        result[city] += 1
+      else:
+        result[city] = 1
+
+    return result
+
+  @classmethod
+  def sorted_cities(cls):
+    return sorted(cls.cities().items(), key=lambda city: city[1])
+```
+---
+
+# Gallery Report Exercise: Your Turn
+
+Create two class methods:
+
+`most_artiest` returns the city with the most galleries.
+
+`least_artiest` returns the city with the least galleries.
+
+```py
+print(f'Least artiest: {Gallery.least_artiest()}') # Toronto
+
+print(f'Most artiest: {Gallery.most_artiest()}')   # Paris
+```
+---
+
+```py
+class Gallery:
+
+  # -- snip --
+
+  @classmethod
+  def least_artiest(cls):
+    return cls.sorted_cities()[0][0]
+
+  @classmethod
+  def most_artiest(cls):
+    return list(reversed(cls.sorted_cities()))[0][0]
+```
+---
+
+# What is a magic method?
+
+--
+
+Magic methods are invoked when objects are passed into python built-in functions.
+
+--
+
+They are sometimes referred to as 'special', 'double underscore' or 'dunder' methods.
+---
+
+# How are magic methods used?
+
+--
+
+Magic methods are invoked when objects are passed into certain python built-ins.
+
+```py
+from datetime import datetime
+
+class Email:
+
+  def __init__(self, sender, recipient, subject, body, signature):
+    self.datetime  = datetime.now()
+    self.sender    = sender
+    self.recipient = recipient
+    self.subject   = subject
+    self.body      = body
+    self.signature = signature
+
+  def __len__(self):
+    return len(self.body + self.signature)
+
+
+email = Email('sean@bitmaker.co',
+              'example@gmail.com',
+              'Hey!',
+              'Lorem ipsum',
+              '\nKind regards,\nSean')
+
+print(len(email))
+```
+---
+
+# City Class Sorted Exercise
+
+Create a city class and use the `__lt__` magic method to allow them to be sorted.
+
+`__lt__` is for "**l**ess **t**han" or `<`.
+
+This method should accept `self` and `other` and return a comparison of the number of galleries in each city.
+
+```py
+toronto  = City('Toronto')
+paris    = City('Paris')
+new_york = City('New York')
+
+cities   = [toronto, paris, new_york]
+
+toronto.galleries.append(Gallery('Art Gallery of Ontario'))
+paris.galleries.append(Gallery('Louvre'))
+paris.galleries.append(Gallery('Paris Museum of Modern Art'))
+paris.galleries.append(Gallery('The Centre Pompidou'))
+new_york.galleries.append(Gallery('The Metropolitan Museum of Art'))
+new_york.galleries.append(Gallery('Guggenheim Museum'))
+
+print(cities)         # [Toronto, Paris, New York]
+print(sorted(cities)) # [Toronto, New York, Paris]
+```
+---
+
+```py
+class City:
+
+  def __init__(self, name):
+    self.name      = name
+    self.galleries = []
+
+  def __repr__(self):
+    return self.name
+
+  def __lt__(self, other):
+    return len(self.galleries) < len(other.galleries)
+
+class Gallery:
+
+  def __init__(self, name):
+    self.name = name
+```
+---
+
+# City Class: Your turn
+
+Implement the ability to add cities together.
+
+Adding two cities will return the total number of galleries in both cities.
+
+Use the magic method `__add__` to do this.
+
+```py
+print(toronto + new_york) # 3
+print(paris + new_york)   # 5
+```
+---
+
+```py
+class City:
+
+  # -- snip --
+
+  def __add__(self, other):
+    return len(self.galleries) + len(other.galleries)
+
+  # -- snip --
+```
+---
+
+# Wrap-up
+
+What we covered:
+
+- reviewed oop part 1:
+  - classes
+  - instances
+  - instance methods and attributes
+- class methods and attributes
+- magic methods
+    </textarea>
+
+  </body>
+</html>

@@ -1,0 +1,20 @@
+Lets revisit the Robots application and explore different ways we can structure the CRUD operations using AJAX.
+
+- review what we have been learning this week and how this fits together
+- open base (student) application and examine how things work currently
+- lets play with adding a form that will create a new robot normally (synchronously)
+- lets convert that form to AJAX...what are our options here? (HTML / JSON)
+- convert form to AJAX returning HTML
+- - intercepting form submissions
+- - constructing an ajax post request
+- - how do we deal with CSRF?
+- - how does the inbound request change? (request.body, decode and converting to json)
+- - how do we handle the response? (select a target and dump the returned html within it)
+- - what are the pros and cons to this approach?
+
+- convert response to JSON
+- - what strategy did we take to show a robot? (build html using returned json, insert or append an area with new html)
+
+- recap 
+- - modern web sites strategies usually go away from the concept of "pages" to the concept of "components" or parts that update/change within a SINGLE page (SPA, One-page applications, etc)
+

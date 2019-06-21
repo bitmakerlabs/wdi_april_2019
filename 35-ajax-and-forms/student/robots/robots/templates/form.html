@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}
+
+  <h2>{{ action|capfirst }} Robot</h2>
+
+  {% if action == 'update' %}
+  <form action="{% url 'robots_update' id=robot.pk %}" method="post" class="robot-form">
+  {% else %}
+  <form action="{% url 'robots_create' %}" method="post" class="robot-form">
+  {% endif %}
+
+    {% csrf_token %}
+    
+    <div>
+      <label for="name">Name</label>
+      <input type="text" name="name" value="{{ robot.name }}" id="robot-name">   
+    </div>
+
+    <div>
+      <label for="name">Model Number</label>
+      <input type="text" name="model_number" value="1">   
+    </div>    
+
+    <div>
+      <label for="name">IP Address</label>
+      <input type="text" name="address" value="{{ robot.address }}">   
+    </div>
+
+    <div>
+      <label for="name">Lasers?</label>
+      <input type="radio" name="lasers" value="true" checked="checked"> Yes
+      <input type="radio" name="lasers" value="false"> No
+    </div>
+
+    <div>
+      <label for="name">Japanese?</label>
+      <input type="radio" name="japanese" value="true" checked="checked"> Yes
+      <input type="radio" name="japanese" value="false"> No
+    </div>
+
+    <div>
+      <input type="submit" value="Save">
+    </div>
+
+  </form>
+
+  <a href="{% url 'robots_index' %}">Back</a>
+{% endblock %}

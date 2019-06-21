@@ -1,0 +1,67 @@
+html, body {
+  margin: 0;
+}
+
+body {
+  font-family: 'Roboto Mono', monospace;
+}
+
+header {
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  background-color: #333;
+  color: #FFF;
+  padding: 20px;
+}
+
+header h1 {
+  margin: 0;
+  display: inline-block;
+}
+
+header nav {
+  float: right;
+  margin-top: 10px;
+}
+
+main {
+  padding: 50px;
+}
+
+a {
+  color: red;
+}
+
+.robots {
+  display: flex;
+  justify-content: space-between;
+}
+
+.robots__box__details {
+  background-color: #DDD;
+  width: 500px;
+  height: 300px;
+}
+
+.robot-form label {
+  display: inline-block;
+  width: 200px;
+}
+
+.robot-form input[type="submit"] {
+  margin-top: 20px;
+}
+
+.robot-form {
+  margin-bottom: 20px;
+}
+
+.robot-name {
+  font-size: 1.5em;
+  color: grey;
+}
+
+.robot-actions {
+  display: inline-block;
+  margin-left: 20px;
+}

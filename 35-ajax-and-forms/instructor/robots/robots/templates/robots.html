@@ -1,0 +1,16 @@
+{% block content %}
+  <section class="robots">
+    <div class="robots__container">
+      <h2>List of Robots</h2>
+      {% for robot in robots %}
+        <article class="robots__robot">
+          <a href="{% url 'robots_show' id=robot.pk %}" class="robot-name">{{ robot.name }}</a>
+          <div class="robot-actions">
+            <a href="{% url 'robots_edit' id=robot.pk %}" class="robot-edit-link">Edit</a> | 
+            <a href="{% url 'robots_delete' id=robot.pk %}" class="robot-delete-link">Delete</a>  
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  </section>
+{% endblock %}

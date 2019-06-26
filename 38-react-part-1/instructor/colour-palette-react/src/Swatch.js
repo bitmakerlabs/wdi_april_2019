@@ -7,6 +7,8 @@ const Swatch = ({red, green, blue}) => {
     backgroundColor: `rgb(${red}, ${green}, ${blue})`
   }
 
+  console.log(`Swatch: rgb(${red}, ${green}, ${blue})`);
+
   return (
     <li className="swatch" style={style}>
       <div>rgb(</div>

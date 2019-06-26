@@ -8,7 +8,7 @@ body, ul {
 body {
   font-family: monospace;
 }
-#app {
+#root {
   display: grid;
   position: fixed;
   width: 100%;

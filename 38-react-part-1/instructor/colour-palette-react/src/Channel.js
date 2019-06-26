@@ -1,13 +1,11 @@
 import React from 'react';
 
-const Channel = ({value}) => {
+const Channel = ({value, handleValueChange}) => {
 
   console.log(`Channel: value: ${value}`);
 
   const updateValue = (newValue) => {
-    console.log(`old value ${value}`)
-    value = newValue;
-    console.log(`value after ${value}`)
+    handleValueChange(newValue);
   };
 
   return (

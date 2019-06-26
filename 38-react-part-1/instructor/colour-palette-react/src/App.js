@@ -1,25 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+const App = () => {
+
+  const style = {
+    backgroundColor: `rgb(0, 0, 0)`
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ul className="palette">
+      <li className="swatch" style={style}>
+        <div>rgb(</div>
+        <div className="channel">
+          <button type="button" className="btn up">+</button>
+          <input type="text" className="txt" value="0" />
+          <button type="button" className="btn down">-</button>
+        </div>
+        <div className="channel">
+          <button type="button" className="btn up">+</button>
+          <input type="text" className="txt" value="0" />
+          <button type="button" className="btn down">-</button>
+        </div>
+        <div className="channel">
+          <button type="button" className="btn up">+</button>
+          <input type="text" className="txt" value="0" />
+          <button type="button" className="btn down">-</button>
+        </div>
+        <div>);</div>
+      </li>
+    </ul>
   );
 }
 

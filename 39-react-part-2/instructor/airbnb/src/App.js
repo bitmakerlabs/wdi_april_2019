@@ -1,5 +1,6 @@
 import React from 'react';
 import Listing from './Listing';
+import { isLVal } from '@babel/types';
 
 function App() {
 
@@ -16,13 +17,29 @@ function App() {
     }
   ]
 
-  const listingElements = initialListings.map( (listing, i) => 
+  const [listings, setListings] = React.useState(initialListings)
+
+  const incrementViews = () => {
+    setListings( (oldListings) =>
+      oldListings.map( (l) => {
+        return {
+          title: l.title,
+          description: l.description,
+          views: l.views + 1
+        }
+      })
+    )
+  }
+
+  const listingElements = listings.map( (listing, i) => 
     <Listing key={i} {...listing} />
   )
 
   return (
     <div className="App">
-      {listingElements} 
+      {listingElements}
+      <hr />
+      <button onClick= { incrementViews } >+ Views</button>
     </div>
   );
 }

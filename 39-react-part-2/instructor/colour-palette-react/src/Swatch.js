@@ -15,7 +15,7 @@ const Swatch = ({red, green, blue, onRemove}) => {
     setR(red);
     setG(green);
     setB(blue);
-  })
+  }, [red, green, blue])
 
   return (
     <li className="swatch" style={style}>

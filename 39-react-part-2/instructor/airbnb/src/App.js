@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Listing from './Listing';
 import { isLVal } from '@babel/types';
 
@@ -17,7 +17,7 @@ function App() {
     }
   ]
 
-  const [listings, setListings] = React.useState(initialListings)
+  const [listings, setListings] = useState(initialListings)
 
   const incrementViews = () => {
     setListings( (oldListings) =>

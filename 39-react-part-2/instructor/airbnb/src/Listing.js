@@ -1,17 +1,22 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Listing = ({title, description, views}) => {
 
-    const [faves, setFaves] = React.useState(10)
+    const [v, setV] = useState(views)
+    const [faves, setFaves] = useState(10)
 
     const incrementFaves = () => {
         setFaves(faves + 1);
     }
 
+    useEffect( () => {
+        setV(views)
+    })
+
     return (
         <div>
             <h1>{title}</h1>
-            <h2>Views: {views}</h2>
+            <h2>Views: {v}</h2>
             <h2>Faves: {faves}</h2>
             <p>{description}</p>
             <button onClick={ incrementFaves }>Favourite!</button>

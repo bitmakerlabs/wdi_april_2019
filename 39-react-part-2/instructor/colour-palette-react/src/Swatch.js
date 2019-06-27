@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Channel from './Channel';
 
 const Swatch = ({red, green, blue, onRemove}) => {
@@ -10,6 +10,12 @@ const Swatch = ({red, green, blue, onRemove}) => {
   const style = {
     backgroundColor: `rgb(${r}, ${g}, ${b})`
   }
+
+  useEffect( () => {
+    setR(red);
+    setG(green);
+    setB(blue);
+  })
 
   return (
     <li className="swatch" style={style}>

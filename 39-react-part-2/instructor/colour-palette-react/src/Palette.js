@@ -12,8 +12,6 @@ const Palette = () => {
   const [swatches, setSwatches] = useState(initialSwatches);
 
   const addSwatch = (s) => {
-    console.log(`Adding a swatch!`, s)
-
     setSwatches( (oldSwatches) =>
       [...oldSwatches, s]
     )

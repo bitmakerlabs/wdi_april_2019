@@ -1,5 +1,6 @@
 import React from 'react';
 import Swatch from './Swatch';
+import Form from './Form';
 
 const Palette = () => {
 
@@ -14,9 +15,12 @@ const Palette = () => {
   );
 
   return (
-    <ul className="palette">
-      { swatchElements }
-    </ul>
+    <React.Fragment>
+      <ul className="palette">
+        { swatchElements }
+      </ul>
+      <Form />
+    </React.Fragment>
   );
 };
 

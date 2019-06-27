@@ -10,9 +10,9 @@ const Form = ({onSubmit}) => {
     event.preventDefault();
 
     const s = {
-      red: rRef.current.value, 
-      green: gRef.current.value, 
-      blue: bRef.current.value
+      red:   Number(rRef.current.value),
+      green: Number(gRef.current.value),
+      blue:  Number(bRef.current.value)
     };
 
     onSubmit(s);

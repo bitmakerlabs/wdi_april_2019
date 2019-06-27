@@ -7,7 +7,7 @@ function App() {
     {
       title: 'My Home',
       description: 'Clean and modern',
-      views: 100
+      views: 105
     },
     {
       title: 'Cute Cottage',

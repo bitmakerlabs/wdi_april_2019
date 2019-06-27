@@ -1,24 +1,28 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Listing from './Listing';
 
 function App() {
+
+  const initialListings = [
+    {
+      title: 'My Home',
+      description: 'Clean and modern',
+      views: 100
+    },
+    {
+      title: 'Cute Cottage',
+      description: 'Cozy and cute',
+      views: 50
+    }
+  ]
+
+  const listingElements = initialListings.map( (listing, i) => 
+    <Listing key={i} {...listing} />
+  )
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {listingElements} 
     </div>
   );
 }

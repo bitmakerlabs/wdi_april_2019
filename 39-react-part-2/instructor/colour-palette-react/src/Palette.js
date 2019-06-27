@@ -11,10 +11,6 @@ const Palette = () => {
   ];
   const [swatches, setSwatches] = useState(initialSwatches);
 
-  const swatchElements = swatches.map( (s, i) =>
-    <Swatch key={i} {...s} />
-  );
-
   const addSwatch = (s) => {
     console.log(`Adding a swatch!`, s)
 
@@ -22,6 +18,16 @@ const Palette = () => {
       [...oldSwatches, s]
     )
   }
+
+  const removeSwatch = (index) => {
+    setSwatches( (oldSwatches) =>
+      oldSwatches.filter( (_, i) => i !== index )
+    )
+  }
+
+  const swatchElements = swatches.map( (s, i) =>
+    <Swatch key={i} {...s} onRemove={ () => removeSwatch(i) } />
+  );
 
   return (
     <React.Fragment>

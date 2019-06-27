@@ -2,8 +2,6 @@ import React from 'react';
 
 const Channel = ({value, handleValueChange}) => {
 
-  console.log(`Channel: value: ${value}`);
-
   const updateValue = (v) => {
     if (Number.isInteger(parseInt(v)) && v >= 0 && v <= 255)
       handleValueChange(v);

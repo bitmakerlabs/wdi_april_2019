@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 
-const Form = () => {
+const Form = ({onSubmit}) => {
 
   const rRef = useRef();
   const gRef = useRef();
@@ -9,11 +9,13 @@ const Form = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    console.log(
-        rRef.current.value, 
-        gRef.current.value, 
-        bRef.current.value
-    );
+    const s = {
+      red: rRef.current.value, 
+      green: gRef.current.value, 
+      blue: bRef.current.value
+    };
+
+    onSubmit(s);
   }
 
   return (

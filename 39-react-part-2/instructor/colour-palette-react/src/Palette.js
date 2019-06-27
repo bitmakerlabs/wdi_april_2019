@@ -14,12 +14,18 @@ const Palette = () => {
     <Swatch key={i} {...s} />
   );
 
+  const addSwatch = (s) => {
+    console.log(`Adding a swatch!`, s)
+
+    swatches.push(s);
+  }
+
   return (
     <React.Fragment>
       <ul className="palette">
         { swatchElements }
       </ul>
-      <Form />
+      <Form onSubmit={addSwatch} />
     </React.Fragment>
   );
 };
